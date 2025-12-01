@@ -50,3 +50,5 @@ while True:
                 print("Scelta non valida. Riprova. ")
     else:
         print("Scelta non valida. Riprova.")
+
+print("Programma terminato.")

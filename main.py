@@ -27,9 +27,9 @@ while True:
             print(f"- {persona}")
     elif choice == "2":
         while True:
-            list_choice = input("A quale lista vuoi aggiungere un elemento? (1 - Animali, 2 - Persone, e - Indietro): ").strip()
+            list_choice = input("A quale lista vuoi aggiungere un elemento? (1 - Animali, 2 - Persone, e - Indietro): ").strip().lower()
             if list_choice == "1":
-                new_animal = input("Inserisci il nome dell'animale da aggiungere: ").strip()
+                new_animal = input("Inserisci il nome dell'animale da aggiungere: ").strip().lower()
                 if new_animal in animali:
                     print(f"{new_animal} è già presente nella lista degli animali.")
                 else:
@@ -37,7 +37,7 @@ while True:
                     print(f"{new_animal} è stato aggiunto alla lista degli animali.")
                 break
             elif list_choice == "2":
-                new_person = input("Inserisci il nome della persona da aggiungere: ").strip()
+                new_person = input("Inserisci il nome della persona da aggiungere: ").strip().lower()
                 if new_person in persone:
                     print(f"{new_person} è già presente nella lista delle persone.")
                 else:

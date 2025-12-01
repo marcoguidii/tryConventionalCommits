@@ -47,6 +47,6 @@ while True:
             elif list_choice.lower() == "e":
                 break
             else:
-                print("Scelta non valida. Riprova.")
+                print("Scelta non valida. Riprova. ")
     else:
         print("Scelta non valida. Riprova.")

@@ -7,7 +7,7 @@ animali = [
     "orso"
 ]
 
-choice = input("Inserisci il nome di un animale: ")
+choice = input("Inserisci il nome di un animale: ").lower().strip()
 
 if choice in animali:
     print(f"L'animale '{choice}' è presente nella lista.")

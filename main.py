@@ -7,32 +7,38 @@ animali = [
     "orso"
 ]
 
-persone = []
+persone = ["giacomo", "mario", "luigi", "anna", "maria", "francesca"]
 
 while True:
-    choice = input("Inserisci il nome di un animale o di una persona (q per terminare): ").lower().strip()
+    choice = input("\n1 - Visualizza le liste \n"
+    "2 - Aggiungi un elemento a una lista \n"
+    "q - Esci\n"
+    "Scegli un'opzione: ").lower().strip()
     if choice == "q":
         print("Uscita dal programma.")
         break
-
-    if choice in animali:
-        print(f"L'animale '{choice}' è presente nella lista.")
-    elif choice in persone:
-        print(f"La persona '{choice}' è presente nella lista.")
-    else:
-        print(f"il soggetto '{choice}' non è presente nelle due liste.")
-        add_choice = input("Vuoi aggiungerlo a una lista? (y/n): ").lower().strip()
-        if add_choice == "y":
-            list_choice = input("A quale lista vuoi aggiungerlo? (animali/persone): ").lower().strip()
-            if list_choice == "animali":
-                animali.append(choice)
-                print(f"L'animale '{choice}' è stato aggiunto alla lista.")
-                print("Lista aggiornata:", animali)
-            elif list_choice == "persone":
-                persone.append(choice)
-                print(f"La persona '{choice}' è stata aggiunta alla lista.")
-                print("Lista aggiornata:", persone)
+    elif choice == "1":
+        print("Lista degli animali:")
+        for animale in animali:
+            print(f"- {animale}")
+        print("\nLista delle persone:")
+        for persona in persone:
+            print(f"- {persona}")
+    elif choice == "2":
+        list_choice = input("A quale lista vuoi aggiungere un elemento? (1 - Animali, 2 - Persone): ").strip()
+        if list_choice == "1":
+            new_animal = input("Inserisci il nome dell'animale da aggiungere: ").strip()
+            if new_animal in animali:
+                print(f"{new_animal} è già presente nella lista degli animali.")
             else:
-                print("Scelta non valida. Nessuna modifica apportata alla lista.")
+                animali.append(new_animal)
+            print(f"{new_animal} è stato aggiunto alla lista degli animali.")
+        elif list_choice == "2":
+            new_person = input("Inserisci il nome della persona da aggiungere: ").strip()
+            if new_person in persone:
+                print(f"{new_person} è già presente nella lista delle persone.")
+            else:
+                persone.append(new_person)
+                print(f"{new_person} è stato aggiunto alla lista delle persone.")
         else:
-            print("Nessuna modifica apportata alla lista.")
+            print("Scelta non valida. Riprova.")

@@ -8,6 +8,10 @@ avaiable_options = list(liste.keys()) + ["e"]
 print("Benvenuto nel programma di gestione delle liste!")
 
 
+
+
+
+
 choice = input("\n1 - Visualizza le liste \n"
     "2 - Aggiungi un elemento a una lista \n"
     "3 - Cerca un elemento in una lista \n"

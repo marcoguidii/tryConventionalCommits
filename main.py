@@ -1,15 +1,9 @@
-animali = [
-    "cane",
-    "gatto",
-    "elefante",
-    "leone",
-    "tigre",
-    "orso"
-]
+liste = {
+    "animali": ["cane", "gatto", "elefante", "leone", "tigre", "orso"],
+    "persone": ["giacomo", "mario", "luigi", "anna", "maria", "francesca"]
+}
 
-persone = ["giacomo", "mario", "luigi", "anna", "maria", "francesca"]
-
-avaiable_options = ["1", "2", "3", "e"]
+avaiable_options = list(liste.keys()) + ["e"]
 
 choice = input("\n1 - Visualizza le liste \n"
     "2 - Aggiungi un elemento a una lista \n"
@@ -19,46 +13,37 @@ choice = input("\n1 - Visualizza le liste \n"
 
 while choice != "q":
     if choice == "1":
-        print("Lista degli animali:")
-        for animale in animali:
-            print(f"- {animale}")
-        print("\nLista delle persone:")
-        for persona in persone:
-            print(f"- {persona}")
+        for key, value in liste.items():
+            print(f"\nLista di {key}:")
+            for item in value:
+                print(f"- {item}")
     elif choice == "2":
-        list_choice = input("A quale lista vuoi aggiungere un elemento? (1 - Animali, 2 - Persone, e - Indietro): ").strip().lower()
+        list_choice = input(f"A quale lista vuoi aggiungere un elemento? ({', '.join(avaiable_options)} - indietro ): ").strip().lower()
         while list_choice not in avaiable_options:
-            list_choice = input("A quale lista vuoi aggiungere un elemento? (1 - Animali, 2 - Persone, e - Indietro): ").strip().lower()
-            
-        if list_choice == "1":
-            new_animal = input("Inserisci il nome dell'animale da aggiungere: ").strip().lower()
-            if new_animal in animali:
-                print(f"{new_animal} è già presente nella lista degli animali.")
+            list_choice = input(f"A quale lista vuoi aggiungere un elemento? ({', '.join(avaiable_options)} - Indietro): ").strip().lower()
+        if list_choice != "e":
+            new_element = input("Inserisci l'elemento da aggiungere: ").strip().lower()
+            if new_element in liste[list_choice]:
+                    print(f"{new_element} è già presente nella lista {list_choice}.")
             else:
-                animali.append(new_animal)
-                print(f"{new_animal} è stato aggiunto alla lista degli animali.")
-        elif list_choice == "2":
-            new_person = input("Inserisci il nome della persona da aggiungere: ").strip().lower()
-            if new_person in persone:
-                print(f"{new_person} è già presente nella lista delle persone.")
-            else:
-                persone.append(new_person)
-                print(f"{new_person} è stato aggiunto alla lista delle persone.")
-        elif list_choice.lower() == "e":
-            print("Tornando al menu principale.")
-        else:
-            print("Scelta non valida. Riprova. ")
+                liste[list_choice].append(new_element)
+                print(f"{new_element} è stato aggiunto alla lista {list_choice}.")
     elif choice == "3":
         search_el = input("Inserisci il nome dell'elemento da cercare: ").strip().lower()
-        if search_el in animali:
-            print(f"{search_el} è presente nella lista degli animali.")
-        elif search_el in persone:
-            print(f"{search_el} è presente nella lista delle persone.")
-        else:
+        found = False
+        for key, value in liste.items():
+            if search_el in value:
+                print(f"{search_el} è presente nella lista {key}.")
+                found = True
+
+        if not found:
             print(f"{search_el} non è presente in nessuna delle liste.")
+    else:
+        print("Opzione non valida. Riprova.")
 
     choice = input("\n1 - Visualizza le liste \n"
     "2 - Aggiungi un elemento a una lista \n"
+    "3 - Cerca un elemento in una lista \n"
     "q - Esci\n"
     "Scegli un'opzione: ").lower().strip()
 
